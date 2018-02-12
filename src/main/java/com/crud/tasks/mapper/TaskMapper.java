@@ -4,6 +4,8 @@ import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,8 +27,15 @@ public class TaskMapper {
     }
 
     public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {
-        return taskList.stream()
-                .map(t -> new TaskDto(t.getId(), t.getTitle(), t.getContent()))
-                .collect(Collectors.toList());
+        List<TaskDto> list = new ArrayList<>();
+        for (Task t : taskList) {
+            TaskDto taskDto = new TaskDto(t.getId(), t.getTitle(), t.getContent());
+            list.add(taskDto);
+        }
+        return list;
     }
+
+    //public String mapToId(final String Id) {
+     //   return Id;
+    //}
 }
