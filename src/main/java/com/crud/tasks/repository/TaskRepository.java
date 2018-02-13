@@ -2,9 +2,6 @@ package com.crud.tasks.repository;
 
 import com.crud.tasks.domain.Task;
 import org.springframework.data.repository.CrudRepository;
-import sun.util.resources.cldr.gv.LocaleNames_gv;
-
-import javax.swing.*;
 import java.util.List;
 import java.util.Optional;
 

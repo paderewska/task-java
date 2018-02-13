@@ -3,11 +3,8 @@ package com.crud.tasks.mapper;
 import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import org.springframework.stereotype.Component;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class TaskMapper {
@@ -34,8 +31,4 @@ public class TaskMapper {
         }
         return list;
     }
-
-    //public String mapToId(final String Id) {
-     //   return Id;
-    //}
 }
