@@ -97,7 +97,7 @@ public class TrelloClientTest {
 
         //Given
         URI uri = new URI("http://test");
-        when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
+       // when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
 
         //When
         List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
