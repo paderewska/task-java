@@ -17,6 +17,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -82,5 +85,6 @@ public class TrelloServiceTest {
         assertEquals("1", test.getId());
         assertEquals("nowa karta", test.getName());
         assertEquals("www.karta.pl", test.getShortUrl());
+        verify(emailService, times(1)).send(any());
     }
 }

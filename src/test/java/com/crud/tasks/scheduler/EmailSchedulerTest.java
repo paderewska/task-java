@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -40,5 +41,5 @@ public class EmailSchedulerTest {
 
         //Then
         verify(adminConfig, times(1)).getAdminMail();
-    }
-}
+        verify(simpleEmailService, times(1)).send(any());
+    }}
