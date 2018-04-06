@@ -101,16 +101,14 @@ public class TaskControllerTest {
     public void shouldUpdateTask() throws Exception{
 
         //Given
-        Task task = new Task(1L, "Obiad", "Kotlet");
+        Task task = new Task(2L, "Kałuża", "Mokra");
         TaskDto taskDto = new TaskDto(2L, "Kałuża", "Mokra");
         TaskDto updatedTaskDto = new TaskDto(2L, "Kałuża sucha", "Mokra plama");
 
         Gson gson = new Gson();
         String jsonContent = gson.toJson(updatedTaskDto);
 
-        when(taskMapper.mapToTask(taskDto)).thenReturn(task);
-        when(dbService.saveTask(task)).thenReturn(task);
-        when(taskMapper.mapToTaskDto(task)).thenReturn(updatedTaskDto);
+        when(taskMapper.mapToTaskDto(dbService.saveTask(taskMapper.mapToTask(taskDto)))).thenReturn(updatedTaskDto);
 
         //When & Then
         mockMvc.perform(put("/v1/task/updateTask")
@@ -118,7 +116,7 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(2L)))
+                .andExpect(jsonPath("$.id", is(2)))
                 .andExpect(jsonPath("$.title", is("Kałuża sucha")))
                 .andExpect(jsonPath("$.content", is("Mokra plama")));
     }
@@ -127,14 +125,14 @@ public class TaskControllerTest {
     public void shouldCreateTask() throws Exception {
 
         //Given
-        Task task = new Task(1L, "Obiad", "Kotlet");
+        Task task = new Task(2L, "Kałuża", "Mokra");
         TaskDto taskDto = new TaskDto(2L, "Kałuża", "Mokra");
+        TaskDto updatedTaskDto = new TaskDto(2L, "Kałuża sucha", "Mokra plama");
 
         Gson gson = new Gson();
-        String jsonContent = gson.toJson(taskDto);
+        String jsonContent = gson.toJson(updatedTaskDto);
 
-        when(taskMapper.mapToTask(taskDto)).thenReturn(task);
-        when(dbService.saveTask(task)).thenReturn(task);
+        when(taskMapper.mapToTaskDto(dbService.saveTask(taskMapper.mapToTask(taskDto)))).thenReturn(updatedTaskDto);
 
         //When & Then
         mockMvc.perform(post("/v1/task/createTask")
@@ -142,8 +140,8 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.title", is("Obiad")))
-                .andExpect(jsonPath("$.content", is("Kotlet")));
+                .andExpect(jsonPath("$.id", is(2)))
+                .andExpect(jsonPath("$.title", is("Kałuża sucha")))
+                .andExpect(jsonPath("$.content", is("Mokra plama")));
     }
 }
