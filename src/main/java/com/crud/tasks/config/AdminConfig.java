@@ -10,4 +10,13 @@ public class AdminConfig {
 
     @Value("${admin.mail}")
     private String adminMail;
+
+    @Value("${admin.name}")
+    private String adminName;
+
+    @Value("${admin.companyName}")
+    private String adminCompanyName;
+
+    @Value("${admin.address}")
+    private String adminAddress;
 }
