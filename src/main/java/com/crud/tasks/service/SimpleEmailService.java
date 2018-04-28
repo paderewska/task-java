@@ -41,6 +41,28 @@ public class SimpleEmailService {
         };
     }
 
+    public void send2(final Mail mail) {
+        LOGGER.info("Starting email preparation...");
+        try {
+            javaMailSender.send(createMimeMessage2(mail));
+            LOGGER.info("Email has been sent.");
+        } catch (MailException e) {
+            LOGGER.error("Process email sending has been failed: ", e.getMessage(), e);
+        }
+    }
+
+    private MimeMessagePreparator createMimeMessage2(final Mail mail) {
+        return mimeMessage -> {
+            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+            messageHelper.setTo(mail.getMailTo());
+            messageHelper.setSubject(mail.getSubject());
+            messageHelper.setText(mailCreatorService.countTasksOnceADay(mail.getMessage()), true);
+        };
+    }
+
+
+
+
     private SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
