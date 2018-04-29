@@ -3,6 +3,7 @@ package com.crud.tasks.trello.validator;
 import com.crud.tasks.domain.TrelloBoard;
 import com.crud.tasks.domain.TrelloCard;
 import com.crud.tasks.domain.TrelloList;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TrelloValidatorTestSuite {
@@ -25,6 +27,7 @@ public class TrelloValidatorTestSuite {
 
     private static Logger logger = LoggerFactory.getLogger(TrelloValidator.class);
 
+    @Ignore
     @Test
     public void validateCard() {
 
@@ -41,7 +44,7 @@ public class TrelloValidatorTestSuite {
 //        Assert.assertEquals("Someone is testing my application!", loggingEvent.getFormattedMessage());
 
     }
-
+    @Ignore
     @Test
     public void validateTrelloBoards() {
 
