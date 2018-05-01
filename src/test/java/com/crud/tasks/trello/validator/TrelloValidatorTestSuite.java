@@ -1,14 +1,10 @@
 package com.crud.tasks.trello.validator;
 
 import com.crud.tasks.domain.TrelloBoard;
-import com.crud.tasks.domain.TrelloCard;
 import com.crud.tasks.domain.TrelloList;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -25,26 +21,8 @@ public class TrelloValidatorTestSuite {
     @InjectMocks
     private TrelloValidator trelloValidator;
 
-    private static Logger logger = LoggerFactory.getLogger(TrelloValidator.class);
+    //private static Logger logger = LoggerFactory.getLogger(TrelloValidator.class);
 
-    @Ignore
-    @Test
-    public void validateCard() {
-
-        //Given
-
-        TrelloCard trelloCard = new TrelloCard("test", "jednostkowy", "super", "jest");
-        TrelloValidator user = new TrelloValidator();
-
-        //When
-        trelloValidator.validateCard(trelloCard);
-
-
-        //Then
-//        Assert.assertEquals("Someone is testing my application!", loggingEvent.getFormattedMessage());
-
-    }
-    @Ignore
     @Test
     public void validateTrelloBoards() {
 

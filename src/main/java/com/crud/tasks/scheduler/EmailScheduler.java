@@ -22,20 +22,25 @@ public class EmailScheduler {
     @Autowired
     private AdminConfig adminConfig;
 
-    //@Scheduled(cron ="0 0 10 * * *")
-    public void sendInformationEmailThymeleaf(){
+    @Scheduled(cron ="0 0 10 * * *")
+    public Mail sendInformationEmailThymeleaf(){
         long size = taskRepository.count();
         String task = "tasks";
         if(size==1) task = "task";
-        simpleEmailService.send(new Mail(
+        Mail mail = new Mail(
                 adminConfig.getAdminMail(),
-                SUBJECT, "Currently in database you got: " + size + " " + task));
+                SUBJECT, "Currently in database you got: " + size + " " + task);
+    simpleEmailService.send(mail);
+    return mail;
     }
 
     @Scheduled(cron = "0 0 10 * * *")
-    public void sendInformationEmail() {
-        simpleEmailService.send2(new Mail(
+    public Mail sendInformationEmail() {
+        Mail mail = new Mail(
                 adminConfig.getAdminMail(),
-                SUBJECT, ""));
+                SUBJECT, "Wiadomosc");
+        simpleEmailService.send2(mail);
+
+        return mail;
     }
 }
